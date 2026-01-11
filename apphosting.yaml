@@ -1,0 +1,66 @@
+# Firebase App Hosting configuration
+# https://firebase.google.com/docs/app-hosting
+
+runConfig:
+  # Minimum instances (0 for scale to zero)
+  minInstances: 0
+  # Maximum instances
+  maxInstances: 10
+  # CPU and memory allocation
+  cpu: 1
+  memoryMiB: 512
+  # Concurrency (requests per instance)
+  concurrency: 80
+
+env:
+  # These will be set via Firebase Console or CLI
+  # Database
+  - variable: DATABASE_URL
+    availability:
+      - BUILD
+      - RUNTIME
+
+  # Firebase
+  - variable: FIREBASE_PROJECT_ID
+    value: your-app-reviews
+    availability:
+      - BUILD
+      - RUNTIME
+
+  - variable: FIREBASE_SERVICE_ACCOUNT
+    availability:
+      - BUILD
+      - RUNTIME
+
+  # AI API Keys
+  - variable: GOOGLE_AI_API_KEY
+    availability:
+      - RUNTIME
+
+  - variable: OPENAI_API_KEY
+    availability:
+      - RUNTIME
+
+  # App Store Connect (for owned apps)
+  - variable: APP_STORE_CONNECT_KEY_ID
+    availability:
+      - RUNTIME
+
+  - variable: APP_STORE_CONNECT_ISSUER_ID
+    availability:
+      - RUNTIME
+
+  - variable: APP_STORE_CONNECT_PRIVATE_KEY
+    availability:
+      - RUNTIME
+
+  # Cron Secret (for automated sync)
+  - variable: CRON_SECRET
+    availability:
+      - RUNTIME
+
+  # Next.js
+  - variable: NEXT_PUBLIC_BASE_URL
+    availability:
+      - BUILD
+      - RUNTIME
